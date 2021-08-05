@@ -1,6 +1,4 @@
-
- 
-<html lang="en">
+<html>
  
 <head>
  
@@ -9,31 +7,20 @@
     <title>Use camera in HTML5 / JS</title>
  
     <style>    
- 
- 
-      button {
- 
-          font-size: 20px;
- 
-      }
- 
-      video {
-          width:100%;
-          height:100%;
-	  position: absolute;
-          top:0;
-          left:0;
-	 facingMode: { exact: "environment" };
-         }
+  
+    video {
+          width:800 px;
+          height:600 px;
+       }
  
       #overlay {
-          width:90%;
-          height:90%;
+          width:300px;
+          height:300px;
           position: absolute;
           top:0;
           left:0;
           pointer-events:none;
-	  background-image: url("Base.jpg");
+	  background-image: url("Base_l.jpg");
 	  opacity: 0.8;
        }
  
@@ -44,8 +31,8 @@
        }
  
       img {
-          width:100%;
-          height:100%;
+          width:800 px;
+          height:600 px;
           position: absolute;
           top:0;
           left:0;
@@ -54,11 +41,10 @@
  
       #my-canvas{
           display:none;
-          width:100%;
-          height:100%;
+          width:800 px;
+          height:600 px;
        }
- 
-    </style>
+     </style>
  
     <script>    
  
@@ -75,8 +61,7 @@
              video: true
              };
  
- 
- 
+  
             const video = document.querySelector('video');
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
  
@@ -97,22 +82,8 @@
     }
  
  
- 
-    function overlay(v){
- 
-        if (v){
- 
-            document.getElementById("overlay").style.display="block";
- 
-        } else {
- 
-            document.getElementById("overlay").style.display="none";          
- 
-        }
- 
-    }
- 
- 
+document.getElementById("overlay").style.display="block";
+
  
     </script>
  
