@@ -10,11 +10,6 @@
  
     <style>    
  
-      .sideA { 
- 
-          background-color: #FDD; 
- 
-      }
  
       button {
  
@@ -23,16 +18,13 @@
       }
  
       video {
-          width:1280px;
-          height:960px;
-    facingMode: {
-      exact: 'environment'
-    }
+          width:640px;
+          height:480px;
        }
  
       #overlay {
-          width:640px;
-          height:480px;
+          width:320px;
+          height:240px;
           position: absolute;
           top:0;
           left:0;
@@ -48,8 +40,8 @@
        }
  
       img {
-          width:1280px;
-          height:960px;
+          width:640px;
+          height:480px;
           position: absolute;
           top:0;
           left:0;
@@ -58,8 +50,8 @@
  
       #my-canvas{
           display:none;
-          width:1280px;
-          height:960px;
+          width:640px;
+          height:480px;
        }
  
     </style>
@@ -73,20 +65,15 @@
  
  
  
- function setup(){
- 
-        if (hasGetUserMedia()) {
- 
-            const constraints = {
- 
-                video: true
- 
-            };
+    function setup(){
+         if (hasGetUserMedia()) {
+             const constraints = {
+             video: true
+             };
  
  
  
             const video = document.querySelector('video');
- 
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
  
         } else {
@@ -97,38 +84,7 @@
  
     }
  
- 
-     function snapshot() {
- 
-        if (localMediaStream) {
- 
-            ctx.drawImage(video, 0, 0);
- 
-            
- 
-            var imageObj = new Image();
- 
-            imageObj.src = 'arrow-01.png';
- 
-            imageObj.onload = function() {
- 
-                ctx.drawImage(imageObj, 0, 0);
- 
-                
- 
-                // "image/webp" works in Chrome.
- 
-                // Other browsers will fall back to image/png.
- 
-                document.querySelector('img').src = canvas.toDataURL('image/webp');
- 
-            };
- 
-        }
- 
-    }
- 
- 
+
  
     function hasGetUserMedia() {
  
@@ -138,7 +94,7 @@
  
  
  
-function overlay(v){
+    function overlay(v){
  
         if (v){
  
@@ -153,6 +109,7 @@ function overlay(v){
     }
  
  
+ 
     </script>
  
 </head>
@@ -161,17 +118,7 @@ function overlay(v){
  
 <body onload="setup();">
  
-    <div id="content" class="sideA">
- 
-        <button onclick="snapshot();">Snap!</button>
- 
-        <button onclick="overlay(true);">Overlay</button>
- 
-        <button onclick="overlay(false);">Hide overlay</button>
- 
-        <div id="error"></div>
- 
-        <div id="container">
+           <div id="container">
  
             <video autoplay></video>
  
@@ -183,8 +130,7 @@ function overlay(v){
  
         </div>
  
-    </div>
- 
+
 </body>
  
 </html>
