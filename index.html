@@ -25,6 +25,9 @@
       video {
           width:1280px;
           height:960px;
+    facingMode: {
+      exact: 'environment'
+    }
        }
  
       #overlay {
@@ -70,15 +73,20 @@
  
  
  
-    function setup(){
-         if (hasGetUserMedia()) {
-             const constraints = {
-             video: true
-             };
+ function setup(){
+ 
+        if (hasGetUserMedia()) {
+ 
+            const constraints = {
+ 
+                video: true
+ 
+            };
  
  
  
             const video = document.querySelector('video');
+ 
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {video.srcObject = stream});
  
         } else {
@@ -90,8 +98,7 @@
     }
  
  
- 
-    function snapshot() {
+     function snapshot() {
  
         if (localMediaStream) {
  
@@ -131,8 +138,9 @@
  
  
  
-    function overlay(v){
-         if (v){
+function overlay(v){
+ 
+        if (v){
  
             document.getElementById("overlay").style.display="block";
  
@@ -143,7 +151,6 @@
         }
  
     }
- 
  
  
     </script>
